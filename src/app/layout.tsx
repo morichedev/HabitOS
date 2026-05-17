@@ -47,7 +47,7 @@ export const metadata: Metadata = {
     siteName: "HabitOS",
     images: [
       {
-        url: "/og.png",
+        url: "/og.svg",
         width: 1200,
         height: 630,
         alt: "HabitOS",
@@ -58,11 +58,10 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "HabitOS — The operating system for your habits",
     description: "Track anything. See everything.",
-    images: ["/og.png"],
+    images: ["/og.svg"],
   },
   icons: {
     icon: [{ url: "/favicon.svg", type: "image/svg+xml" }],
-    apple: [{ url: "/apple-touch-icon.png" }],
   },
   manifest: "/manifest.webmanifest",
   alternates: { canonical: "/" },

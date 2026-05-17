@@ -1,0 +1,20 @@
+{
+  "name": "HabitOS — Operating system for your habits",
+  "short_name": "HabitOS",
+  "description": "Track habits, gym, study, productivity, calories and any custom metric. Offline-first.",
+  "start_url": "/dashboard",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#0a0a0c",
+  "theme_color": "#7C5CFF",
+  "categories": ["productivity", "lifestyle", "health"],
+  "icons": [
+    { "src": "/favicon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any maskable" }
+  ],
+  "shortcuts": [
+    { "name": "Today", "url": "/dashboard", "description": "See today's habits" },
+    { "name": "Gym", "url": "/gym", "description": "Log a workout" },
+    { "name": "Analytics", "url": "/analytics", "description": "View your trends" }
+  ]
+}
