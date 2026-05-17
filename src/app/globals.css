@@ -1,0 +1,256 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* =========================================================
+   HabitOS — Premium Design Tokens
+   Inspirado en Linear, Notion, Apple, Raycast.
+   ========================================================= */
+
+@layer base {
+  :root {
+    /* Surface */
+    --background: 240 14% 99%;
+    --foreground: 240 10% 8%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 240 10% 8%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 240 10% 8%;
+
+    /* Brand — violet/indigo "intelligence" */
+    --primary: 256 92% 62%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 240 5% 96%;
+    --secondary-foreground: 240 10% 8%;
+
+    --muted: 240 5% 96%;
+    --muted-foreground: 240 5% 45%;
+
+    --accent: 192 95% 54%;
+    --accent-foreground: 240 10% 8%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --success: 152 70% 42%;
+    --warning: 38 92% 50%;
+    --info: 214 95% 60%;
+
+    --border: 240 6% 90%;
+    --input: 240 6% 90%;
+    --ring: 256 92% 62%;
+
+    --radius: 0.85rem;
+
+    --shadow-color: 240 6% 10%;
+  }
+
+  .dark {
+    --background: 240 12% 5%;
+    --foreground: 240 5% 96%;
+
+    --card: 240 10% 8%;
+    --card-foreground: 240 5% 96%;
+
+    --popover: 240 10% 8%;
+    --popover-foreground: 240 5% 96%;
+
+    --primary: 256 95% 70%;
+    --primary-foreground: 240 10% 6%;
+
+    --secondary: 240 6% 12%;
+    --secondary-foreground: 240 5% 96%;
+
+    --muted: 240 6% 12%;
+    --muted-foreground: 240 5% 65%;
+
+    --accent: 192 95% 60%;
+    --accent-foreground: 240 10% 6%;
+
+    --destructive: 0 72% 55%;
+    --destructive-foreground: 0 0% 100%;
+
+    --success: 152 65% 50%;
+    --warning: 38 95% 60%;
+    --info: 214 95% 65%;
+
+    --border: 240 6% 16%;
+    --input: 240 6% 16%;
+    --ring: 256 95% 70%;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-feature-settings: "ss01", "cv11", "calt";
+  }
+
+  ::selection {
+    background: hsl(var(--primary) / 0.25);
+    color: hsl(var(--foreground));
+  }
+
+  /* Scrollbar premium */
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: hsl(var(--border));
+    border-radius: 999px;
+    border: 2px solid hsl(var(--background));
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: hsl(var(--muted-foreground) / 0.4);
+  }
+}
+
+@layer components {
+  /* Glassmorphism */
+  .glass {
+    @apply bg-card/60 backdrop-blur-xl backdrop-saturate-150 border border-border/60;
+  }
+  .glass-strong {
+    @apply bg-card/80 backdrop-blur-2xl backdrop-saturate-200 border border-border/60;
+  }
+
+  /* Card premium */
+  .card-premium {
+    @apply relative rounded-2xl border border-border/70 bg-card/80 backdrop-blur-xl
+           shadow-[0_1px_0_0_hsl(var(--border)),0_24px_48px_-24px_hsl(var(--shadow-color)/0.18)]
+           transition-all duration-300;
+  }
+  .card-premium:hover {
+    @apply border-border;
+    transform: translateY(-2px);
+  }
+
+  /* Gradient text */
+  .gradient-text {
+    background: linear-gradient(
+      120deg,
+      hsl(var(--foreground)) 0%,
+      hsl(var(--primary)) 50%,
+      hsl(var(--accent)) 100%
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .gradient-brand {
+    background: linear-gradient(
+      135deg,
+      hsl(var(--primary)) 0%,
+      hsl(var(--info)) 60%,
+      hsl(var(--accent)) 100%
+    );
+  }
+
+  /* Subtle dotted grid background */
+  .bg-dots {
+    background-image: radial-gradient(
+      hsl(var(--border)) 1px,
+      transparent 1px
+    );
+    background-size: 24px 24px;
+  }
+
+  .bg-grid {
+    background-image: linear-gradient(
+        hsl(var(--border) / 0.6) 1px,
+        transparent 1px
+      ),
+      linear-gradient(
+        90deg,
+        hsl(var(--border) / 0.6) 1px,
+        transparent 1px
+      );
+    background-size: 56px 56px;
+  }
+
+  /* Aurora background blob */
+  .aurora-blob {
+    position: absolute;
+    inset: -20%;
+    background: var(--tw-bg, conic-gradient(from 180deg at 50% 50%,
+      hsl(var(--primary)/0.25), hsl(var(--info)/0.18),
+      hsl(var(--accent)/0.22), hsl(var(--primary)/0.25)));
+    filter: blur(80px);
+    opacity: 0.7;
+    z-index: -1;
+    border-radius: 50%;
+    animation: spin-slow 30s linear infinite;
+  }
+
+  /* Shiny shimmer for skeleton */
+  .shimmer {
+    background: linear-gradient(
+      90deg,
+      hsl(var(--muted)) 0%,
+      hsl(var(--muted-foreground) / 0.15) 50%,
+      hsl(var(--muted)) 100%
+    );
+    background-size: 200% 100%;
+    @apply animate-shimmer;
+  }
+
+  /* Kbd */
+  .kbd {
+    @apply inline-flex h-5 min-w-5 items-center justify-center rounded-md
+           border border-border bg-muted px-1.5 text-[10px] font-medium
+           text-muted-foreground font-mono;
+  }
+
+  /* Soft divider */
+  .divider {
+    @apply h-px w-full bg-gradient-to-r from-transparent via-border to-transparent;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+  .text-pretty {
+    text-wrap: pretty;
+  }
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .mask-fade-b {
+    mask-image: linear-gradient(to bottom, black 60%, transparent);
+    -webkit-mask-image: linear-gradient(to bottom, black 60%, transparent);
+  }
+}
+
+/* Reduce motion respect */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
